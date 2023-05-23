@@ -27,13 +27,16 @@ func Sqrt(a float64) (float64, error) {
 	return math.Sqrt(a), nil
 }
 func AddMany(inputs ...float64) float64 {
-	// v debug-u mi prepisuje hodnoty sum a tmp na 0, tak mi to cyklicky nefunguje
-	// použil som forr ale rozmýšlam že použijem klasický fori
-	var sum, tmp float64 = 0, 0
+	var sum float64 = 0
 	for _, input := range inputs {
-		sum := Add(tmp, input)
-		tmp := sum
-		println("tmp %.3f", tmp)
+		sum = Add(sum, input)
+	}
+	return sum
+}
+func MuiltiplyMany(inputs ...float64) float64 {
+	var sum float64 = 1
+	for _, input := range inputs {
+		sum = Multiply(sum, input)
 	}
 	return sum
 }

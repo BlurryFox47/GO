@@ -140,3 +140,19 @@ func TestAddMany(t *testing.T) {
 		}
 	}
 }
+func TestMultiplyMany(t *testing.T) {
+	t.Parallel()
+	type testCase struct {
+		a, b, c, d, e, f, g float64
+		want                float64
+	}
+	testCases := []testCase{
+		{a: 2, b: 2, c: 2, d: 2, e: 1, f: 1, g: 1, want: 16},
+	}
+	for _, tc := range testCases {
+		got := calculator.MuiltiplyMany(tc.a, tc.b, tc.c, tc.d, tc.e, tc.f, tc.g)
+		if got != tc.want {
+			t.Errorf("MultiplyMany()")
+		}
+	}
+}
