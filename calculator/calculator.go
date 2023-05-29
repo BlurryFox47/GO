@@ -33,10 +33,29 @@ func AddMany(inputs ...float64) float64 {
 	}
 	return sum
 }
+func SubtractMany(inputs ...float64) float64 {
+	var res float64 = inputs[0]
+	for i := 1; i < len(inputs); i++ {
+		res = Subtract(res, inputs[i])
+	}
+	return res
+}
 func MuiltiplyMany(inputs ...float64) float64 {
 	var sum float64 = 1
 	for _, input := range inputs {
 		sum = Multiply(sum, input)
 	}
 	return sum
+}
+func DivideMany(inputs ...float64) (float64, error) {
+	var res float64 = inputs[0]
+	var err error
+	for i := 1; i < len(inputs); i++ {
+		res, err = Divide(res, inputs[i])
+		if err != nil {
+
+			return 0, fmt.Errorf("One of dividers is a zero")
+		}
+	}
+	return res, nil
 }

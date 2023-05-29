@@ -140,6 +140,22 @@ func TestAddMany(t *testing.T) {
 		}
 	}
 }
+func TestSubtractMany(t *testing.T) {
+	t.Parallel()
+	type testCase struct {
+		a, b, c, d, e, f, g float64
+		want                float64
+	}
+	testCases := []testCase{
+		{a: 55, b: 7, c: 9, d: 5, e: 2, f: 10, g: 8, want: 14},
+	}
+	for _, tc := range testCases {
+		got := calculator.SubtractMany(tc.a, tc.b, tc.c, tc.d, tc.e, tc.f, tc.g)
+		if got != tc.want {
+			t.Errorf("SubtractMany ()")
+		}
+	}
+}
 func TestMultiplyMany(t *testing.T) {
 	t.Parallel()
 	type testCase struct {
@@ -152,7 +168,7 @@ func TestMultiplyMany(t *testing.T) {
 	for _, tc := range testCases {
 		got := calculator.MuiltiplyMany(tc.a, tc.b, tc.c, tc.d, tc.e, tc.f, tc.g)
 		if got != tc.want {
-			t.Errorf("MultiplyMany()")
+			t.Errorf("DivideMany()")
 		}
 	}
 }
